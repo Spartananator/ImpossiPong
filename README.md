@@ -1,4 +1,4 @@
-This is a WIP project, which is a new style of Pong!
+This is a WIP project, which is a new take on the age old game of Pong!
 
 Taking the classic starter game for many developers and fleshing it out into a roguelike, brutal game of survival has been a fun experience!
 
