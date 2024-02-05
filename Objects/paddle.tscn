@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh0qaobwbe0d4"]
+
+[ext_resource type="Texture2D" uid="uid://bbhrnwh5i2jqc" path="res://Sprites/PongBlock.png" id="1_b1mj0"]
+
+[sub_resource type="GDScript" id="GDScript_5o50n"]
+script/source = "extends CharacterBody2D
+@export var playercontrolled = true
+@export var speed = 100
+
+var mouse_position
+var ballposition = Vector2.ZERO
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if playercontrolled == true:
+		ballposition = $\"../Ball\".get(\"position\")
+		var AIdirection = (get_local_mouse_position().y - position.y)
+		velocity.y = (AIdirection * speed)
+		move_and_collide((velocity * delta))
+	if playercontrolled == false:
+		ballposition = $\"../Ball\".get(\"position\")
+		var AIdirection = (ballposition.y - position.y)
+		velocity.y = (AIdirection * speed)
+		move_and_collide((velocity * delta))
+	
+	
+
+
+
+
+
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4frtf"]
+radius = 74.5
+height = 760.57
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhviu"]
+size = Vector2(114.5, 750)
+
+[node name="Paddle" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.4)
+script = SubResource("GDScript_5o50n")
+
+[node name="SpritePaddle" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.5)
+texture = ExtResource("1_b1mj0")
+
+[node name="CollisionPaddle" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+scale = Vector2(1, 0.5)
+shape = SubResource("CapsuleShape2D_4frtf")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="DetectPaddle" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(42.75, 2.50001)
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_yhviu")
