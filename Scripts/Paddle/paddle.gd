@@ -27,4 +27,6 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body.name.match("**Ball****") :
 		emit_signal("pointawarded")
+	if body.has_method("_speed_up"):
+		body._speed_up()
 	pass # Replace with function body.

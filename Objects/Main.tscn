@@ -18,7 +18,6 @@ position = Vector2(50, 31)
 [node name="Paddle" parent="." instance=ExtResource("1_7oiuu")]
 position = Vector2(-27, 509)
 script = ExtResource("2_e2rjw")
-speed = 20
 
 [node name="Ball" parent="." instance=ExtResource("3_33oqe")]
 position = Vector2(909, 480)
@@ -58,7 +57,7 @@ offset_bottom = 40.0
 script = ExtResource("6_xq2fn")
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="UI"]
+[node name="NewRound" type="Button" parent="UI"]
 layout_mode = 2
 anchor_left = 8.375
 anchor_top = 4.275
@@ -101,7 +100,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="UI"]
+[node name="Shoppe" type="Button" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 8.375
@@ -133,10 +132,10 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pointawarded" from="Paddle" to="UI" method="_on_paddle_pointawarded"]
 [connection signal="body_entered" from="Paddle/Area2D" to="Paddle" method="_on_area_2d_body_entered"]
 [connection signal="ai_scored" from="Ball" to="UI" method="_on_ball_ai_scored"]
-[connection signal="new_round" from="Ball" to="UI" method="_on_ball_new_round"]
 [connection signal="player_scored" from="Ball" to="UI" method="_on_ball_player_scored"]
 [connection signal="body_entered" from="PlayerGoalArera" to="Ball" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="AiGoalArea" to="Ball" method="_on_area_2d_2_body_entered"]
-[connection signal="pressed" from="UI/Button" to="Ball" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/NewRound" to="Ball" method="_on_new_round_pressed"]
+[connection signal="pressed" from="UI/NewRound" to="UI" method="_on_new_round_pressed"]
 
 [editable path="Paddle"]

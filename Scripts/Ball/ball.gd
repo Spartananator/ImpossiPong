@@ -5,7 +5,8 @@ var location = Vector2.ZERO
 var start = Vector2.ZERO
 signal player_scored
 signal ai_scored
-signal new_round
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	veloc.x = [1,-1][randi() % 2]
@@ -18,12 +19,6 @@ func _physics_process(delta):
 	if collisiondetect:
 		velocity = velocity.bounce(collisiondetect.get_normal())
 		velocity.y += [0.1,-0.1,0.0,0.2,-0.2,0.3,-0.3][randi() % 7]
-		if velocity.x > 0.0:
-			velocity.x += 10.0
-		elif velocity.x < 0.0:
-			velocity.x += -10.0
-		print(velocity.x)
-		print(collisiondetect.get("Group"))
 		
 	
 
@@ -41,7 +36,12 @@ func _on_area_2d_2_body_entered(_body):
 	emit_signal("player_scored")
 	pass # Replace with function body.
 
-
+func _speed_up():
+	if velocity.x > 0.0:
+			velocity.x += 10.0
+	elif velocity.x < 0.0:
+			velocity.x += -10.0
+	pass
 
 func _new_round():
 	veloc.x = [1,-1][randi() % 2]
@@ -51,7 +51,7 @@ func _new_round():
 	pass # Replace with function body.
 
 
-func _on_button_pressed():
-	emit_signal("new_round")
+func _on_new_round_pressed():
 	_new_round()
 	pass # Replace with function body.
+
