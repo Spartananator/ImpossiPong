@@ -58,7 +58,8 @@ script = ExtResource("6_xq2fn")
 metadata/_edit_use_anchors_ = true
 
 [node name="NewRound" type="Button" parent="UI"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 8.375
 anchor_top = 4.275
 anchor_right = 8.375
@@ -68,10 +69,10 @@ offset_top = 59.0
 offset_right = 619.0
 offset_bottom = 120.0
 text = "START"
-metadata/_edit_use_anchors_ = true
 
 [node name="PlayerScore" type="Label" parent="UI"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 8.375
 anchor_top = 4.275
 anchor_right = 8.375
@@ -83,10 +84,10 @@ offset_bottom = 351.0
 text = "P:"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="AiScore" type="Label" parent="UI"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 8.375
 anchor_top = 4.275
 anchor_right = 8.375
@@ -98,7 +99,6 @@ offset_bottom = 350.0
 text = "AI:"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Shoppe" type="Button" parent="UI"]
 layout_mode = 1
@@ -112,7 +112,6 @@ offset_top = 445.0
 offset_right = 624.0
 offset_bottom = 487.0
 text = "SHOPPE"
-metadata/_edit_use_anchors_ = true
 
 [node name="Points" type="Label" parent="UI"]
 layout_mode = 1
@@ -127,7 +126,13 @@ offset_right = 694.0
 offset_bottom = 490.0
 text = "🪙"
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+
+[node name="closeGame" type="Button" parent="UI"]
+offset_left = -21.0
+offset_top = -14.0
+offset_right = 66.0
+offset_bottom = 20.0
+text = "QUIT"
 
 [connection signal="pointawarded" from="Paddle" to="UI" method="_on_paddle_pointawarded"]
 [connection signal="body_entered" from="Paddle/Area2D" to="Paddle" method="_on_area_2d_body_entered"]
@@ -137,5 +142,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="body_entered" from="AiGoalArea" to="Ball" method="_on_area_2d_2_body_entered"]
 [connection signal="pressed" from="UI/NewRound" to="Ball" method="_on_new_round_pressed"]
 [connection signal="pressed" from="UI/NewRound" to="UI" method="_on_new_round_pressed"]
+[connection signal="pressed" from="UI/closeGame" to="UI" method="_on_close_game_pressed"]
 
 [editable path="Paddle"]

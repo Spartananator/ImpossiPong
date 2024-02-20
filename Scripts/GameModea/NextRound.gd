@@ -10,23 +10,25 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(_delta):
-	$Points.set_text("🪙" + str(cash))
+	
 	pass
 
 func _on_ball_ai_scored():
 	aiScore += 1
-	show()
+	_show()
 	$AiScore.set_text("AI:" + str(aiScore))
 	pass # Replace with function body.
 
 
 func _on_ball_player_scored():
 	playerScore += 1
-	show()
+	_show()
 	$PlayerScore.set_text("P:" + str(playerScore))
 	
 	pass # Replace with function body.
-
+func _show():
+	$Points.set_text("🪙" + str(cash))
+	show()
 
 func _on_paddle_pointawarded():
 	cash += 1
@@ -35,4 +37,9 @@ func _on_paddle_pointawarded():
 
 func _on_new_round_pressed():
 	hide()
+	pass # Replace with function body.
+
+
+func _on_close_game_pressed():
+	get_tree().quit()
 	pass # Replace with function body.
