@@ -5,7 +5,7 @@ var location = Vector2.ZERO
 var start = Vector2.ZERO
 signal player_scored
 signal ai_scored
-
+var force = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,8 +17,11 @@ func _ready():
 func _physics_process(delta):
 	var collisiondetect = move_and_collide((velocity * delta))
 	if collisiondetect:
+		force = $"../Paddle".get("impartforce")
+		velocity.y += (force.y / 10)
 		velocity = velocity.bounce(collisiondetect.get_normal())
 		velocity.y += [0.1,-0.1,0.0,0.2,-0.2,0.3,-0.3][randi() % 7]
+		print(velocity)
 		
 	
 

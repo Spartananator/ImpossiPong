@@ -4,6 +4,7 @@ extends CharacterBody2D
 var collision
 var mouse_position
 var ballposition = Vector2.ZERO
+var impartforce = null
 signal pointawarded
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +22,7 @@ func _process(delta):
 		#if collision.get_collider().Name() == "Ball":
 			#emit_signal("pointawarded")
 			
-	
+	impartforce = velocity
 	
 	
 func _on_area_2d_body_entered(body):
